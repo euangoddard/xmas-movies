@@ -32,6 +32,7 @@ gulp.task('build-js', function () {
     .on('error', $.util.log.bind($.util, 'Browserify Error'))
     .pipe(source('app.js'))
     .pipe(buffer())
+    .pipe($.ngAnnotate())
     .pipe($.if(CONFIG.is_release, $.uglify()))
     .pipe(gulp.dest('./dist/js'));
 });
