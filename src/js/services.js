@@ -35,7 +35,8 @@ services.factory('Normalizer', function (SYNONYMS) {
 
 services.constant('SYNONYMS', {
     '+': 'and',
-    '&': 'and'
+    '&': 'and',
+    'the': ''
 });
 
 

@@ -44,6 +44,10 @@ describe('Services', function () {
             expect(Normalizer.normalize('one & two')).toEqual('one-and-two');
             expect(Normalizer.normalize('one + two')).toEqual('one-and-two');
         });
+        
+        it('should remove the definite article', function () {
+            expect(Normalizer.normalize('the and the x')).toEqual('x-and-y');
+        });
     });
 
 });
