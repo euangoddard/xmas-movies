@@ -11,18 +11,23 @@
   <!-- endinject -->
 
 </head>
-<body>
+<body ng-app="xmas-movies" ng-controller="AppController as app">
+  <header>
+    <h1>Christmas movie challenge</h1>
+    <aside ng-cloak>{{ app.correct_movies.length }}</aside>
+  </header>
   <div class="wall">
     <div class="wall-image"></div>
   </div>
-  <form>
+  <form ng-submit="app.guess(app.movie.name)">
     <input
       type="text"
       required
       class="input-seemless"
       placeholder="Enter a movie title"
       autocomplete="off"
-      >
+      ng-model="app.movie.name"
+    >
   </form>
   <!-- inject:js -->
   <!-- endinject -->
