@@ -32,12 +32,17 @@ describe('Services', function () {
         });
 
         it('should remove any non-alphanumeric characters', function () {
-            expect(Normalizer.normalize('first & second')).toEqual('first-second');
+            expect(Normalizer.normalize('first / second')).toEqual('first-second');
             expect(Normalizer.normalize('it\'s great!')).toEqual('its-great');
         });
 
-        it('should trimextraneous whitespace', function () {
+        it('should trim extraneous whitespace', function () {
             expect(Normalizer.normalize('    \n space  \t  ')).toEqual('space');
+        });
+
+        it('should normalize synonyms', function () {
+            expect(Normalizer.normalize('one & two')).toEqual('one-and-two');
+            expect(Normalizer.normalize('one + two')).toEqual('one-and-two');
         });
     });
 
