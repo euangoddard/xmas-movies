@@ -2,8 +2,13 @@ var angular = require('angular');
 var mocks = require('angular-mocks');
 
 describe('Services', function () {
+    var MOCK_MOVIE = {name: 'A movie'};
+
     beforeEach(function () {
         angular.mock.module(require('../src/js/services'));
+        angular.mock.module(function($provide) {
+            $provide.constant('MOVIES', [MOCK_MOVIE]);
+        });
     });
 
     describe('Normalizer', function () {
@@ -46,8 +51,35 @@ describe('Services', function () {
         });
         
         it('should remove the definite article', function () {
-            expect(Normalizer.normalize('the and the x')).toEqual('x-and-y');
+            expect(Normalizer.normalize('the x and the y')).toEqual('x-and-y');
         });
+    });
+
+    describe('MovieLookup', function () {
+        var MovieLookup;
+        beforeEach(inject(function (_MovieLookup_) {
+            MovieLookup = _MovieLookup_;
+        }));
+
+        it('should identify existing movies by name', function () {
+            expect(MovieLookup.has(MOCK_MOVIE.name)).toBe(true);
+        });
+
+        it('should identify non-existing movies by name', function () {
+            expect(MovieLookup.has('not found')).toBe(false);
+        });
+
+        it('should retrieve the movie by normalized name', function () {
+            expect(MovieLookup.get(MOCK_MOVIE.name)).toEqual(MOCK_MOVIE);
+        });
+
+        it('should return null when the movie is not found by normalized name', function () {
+            expect(MovieLookup.get('not found')).toBe(null);
+        });
+
+        it('should report the number of known movies', function () {
+            expect(MovieLookup.size).toEqual(1);
+        })
     });
 
 });

@@ -1,3 +1,5 @@
+'use strict';
+
 var angular = require('angular');
 
 var app = angular.module('xmas-movies', [
@@ -15,23 +17,23 @@ app.run(function (SoundManager) {
 });
 
 
-app.controller('AppController', function (Normalizer, SoundManager, MOVIES) {
+app.controller('AppController', function (SoundManager, MovieLookup) {
     var ctrl = this;
     this.correct_movies = [];
+    this.total_movies = MovieLookup.size;
 
-    this.guess = function (movie) {
-        var movie_normalized = Normalizer.normalize(movie);
-        
-        if (MOVIES.indexOf(movie_normalized) > -1) {
-            if (ctrl.correct_movies.indexOf(movie_normalized) > -1) {
-                alert('Already got ' + movie);
+    this.guess = function (movie_name) {
+        if (MovieLookup.has(movie_name)) {
+            var movie = MovieLookup.get(movie_name);
+            if (ctrl.correct_movies.indexOf(movie) > -1) {
+                alert('Already got ' + movie.name);
             } else {
                 SoundManager.play('hohoho');
-                ctrl.correct_movies.push(movie_normalized);
+                ctrl.correct_movies.push(movie);
                 clear_guessed_movie();
             }
         } else {
-            alert(movie + ' is not on the wall');
+            alert(movie_name + ' is not on the wall');
         }
     };
 
@@ -40,9 +42,3 @@ app.controller('AppController', function (Normalizer, SoundManager, MOVIES) {
     };
     clear_guessed_movie();
 });
-
-
-app.constant('MOVIES', [
-    'the-grinch',
-    'the-nightmare-before-christmas'
-]);
