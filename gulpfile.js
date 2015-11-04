@@ -69,13 +69,14 @@ gulp.task('build-html', ['build-js', 'sass'], function () {
 gulp.task('static', function () {
   gulp.src('./src/static/**/*')
     .pipe(gulp.dest('./dist'));
-})
+});
 
 
 gulp.task('lint', function () {
   return gulp.src(['./src/**/*.js'])
-    .pipe($.jshint())
-    .pipe($.jshint.reporter(stylish));
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
 });
 
 
