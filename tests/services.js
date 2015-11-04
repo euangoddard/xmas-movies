@@ -1,5 +1,6 @@
 var angular = require('angular');
-var mocks = require('angular-mocks');
+require('angular-mocks');
+
 
 describe('Services', function () {
     var MOCK_MOVIE = {name: 'A movie'};
@@ -79,7 +80,7 @@ describe('Services', function () {
 
         it('should report the number of known movies', function () {
             expect(MovieLookup.size).toEqual(1);
-        })
+        });
     });
 
 });

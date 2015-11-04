@@ -73,7 +73,7 @@ gulp.task('static', function () {
 
 
 gulp.task('lint', function () {
-  return gulp.src(['./src/**/*.js'])
+  return gulp.src(['./src/**/*.js', './tests/**/*.js'])
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.eslint.failAfterError());
