@@ -43,6 +43,7 @@ sound.provider('SoundManager', function () {
                         resolve(sound);
                     });
                 };
+                request.onerror = reject;
             });
             request.send();
             return sound_load_promise;
@@ -50,7 +51,7 @@ sound.provider('SoundManager', function () {
 
         return {
             play: function (sound) {
-                var sound_promise = $q(function (resolve, reject) {
+                var sound_promise = $q(function (resolve) {
                     var buffer = sounds[sound];
                     var source = context.createBufferSource();
                     source.buffer = buffer;

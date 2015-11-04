@@ -58,7 +58,7 @@ services.factory('MovieLookup', function (MOVIES, Normalizer) {
         get: function (movie_name) {
             var movie_name_normalized = Normalizer.normalize(movie_name);
             var movie = movies_by_normalized_name[movie_name_normalized] || null;
-            return movie
+            return movie;
         }
     };
 
@@ -73,7 +73,7 @@ services.factory('MovieLookup', function (MOVIES, Normalizer) {
 
 services.constant('MOVIES', [
     {name: 'The grinch'},
-    {name: 'The nightmare before Christmas'},
+    {name: 'The nightmare before Christmas'}
 ]);
 
 
