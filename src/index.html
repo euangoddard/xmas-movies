@@ -17,7 +17,7 @@
     <aside ng-cloak>{{ app.correct_movies.length }} / {{ app.total_movies }}</aside>
   </header>
   <div class="wall">
-    <img class="wall-image" src="/images/background.jpg" magnify>
+    <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">
   </div>
   <form ng-submit="app.guess(app.movie.name)">
     <input
