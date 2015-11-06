@@ -4,8 +4,7 @@ var angular = require('angular');
 
 var app = angular.module('xmas-movies', [
     require('./services'),
-    require('./sound'),
-    require('./fullscreen')
+    require('./sound')
 ]);
 
 app.config(function (SoundManagerProvider) {
@@ -18,7 +17,7 @@ app.run(function (SoundManager) {
 });
 
 
-app.controller('AppController', function (SoundManager, MovieLookup, Fullscreen) {
+app.controller('AppController', function (SoundManager, MovieLookup) {
     var ctrl = this;
     this.correct_movies = [];
     this.total_movies = MovieLookup.size;
