@@ -42,7 +42,6 @@
   font-weight: 300;
   font-size: 2rem;
   line-height: 3rem;
-  //letter-spacing: .06em;
   text-align: center;
   outline: 0;
   background-color: transparent;
@@ -64,7 +63,7 @@
 
 .dialog-actions {
   position: absolute;
-  top: 1rem;
+  top: 0;
   right: 1rem;
 
   button {
@@ -91,6 +90,11 @@
 .dialog-content {
   margin: 0 auto;
   width: 90%;
+  
+  h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 
   @include large-screens {
     width: 50%;
