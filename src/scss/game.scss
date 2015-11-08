@@ -48,11 +48,3 @@
   background-color: transparent;
   color: #fff;
 }
-
-@keyframes rotate-phone {
-  0% {
-    transform: rotateZ(0);
-  } 50%, 100% {
-    transform: rotateZ(90deg);
-  }
-}
