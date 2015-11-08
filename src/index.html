@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <title>Christmas Movies</title>
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,16 +29,22 @@
       ng-model="app.movie.name"
     >
   </form>
+  
+  <div class="portrait-warning">
+    <p>Rotate your device</p>
+    <p>
+      <i class="fa fa-mobile"></i>
+    </p>
+    <p>for best results</p>
+  </div>
 
-  <aside class="dialog">
+  <aside class="dialog" ng-if="app.dialog">
     <nav class="dialog-actions">
-      <button>&times;</button>
+      <button ng-click="app.close_dialog()">&times;</button>
     </nav>
     <article class="dialog-content">
-      <h2>This is the title of the dialog</h2>
-      <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam scelerisque ipsum est, at venenatis turpis pharetra id. Donec nec facilisis enim. Nunc nec mauris quis nibh iaculis luctus.</p><p>Vivamus mollis enim vel consectetur dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur in odio vel nisl finibus viverra. Vestibulum et tortor vel ipsum tempus imperdiet at ut mauris.
-      </p>
+      <h2>{{ app.dialog.title }}</h2>
+      <p>{{ app.dialog.body }}</p>
     </article>
   </aside>
   <!-- inject:js -->

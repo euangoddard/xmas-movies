@@ -72,8 +72,31 @@ services.factory('MovieLookup', function (MOVIES, Normalizer) {
 
 
 services.constant('MOVIES', [
-    {name: 'The grinch'},
-    {name: 'The nightmare before Christmas'}
+    {name: 'A Christmas Carol'},
+    {name: 'Arthur Christmas'},
+    {name: 'Batman Returns'},
+    {name: 'Die Hard'},
+    {name: 'Die Harder'},
+    {name: 'Elf'},
+    {name: 'Four Christmases'},
+    {name: 'Fred Claus'},
+    {name: 'Gremlins'},
+    {name: 'Hogfather'},
+    {name: 'Home Alone 2'},
+    {name: 'Home Alone'},
+    {name: 'Its a Wonderful Life'},
+    {name: 'Jingle all the way'},
+    {name: 'Lethal Weapon'},
+    {name: 'Love Actually'},
+    {name: 'Miracle on 34th Street'},
+    {name: 'Scrooged'},
+    {name: 'The Grinch'},
+    {name: 'The Long Kiss Goodnight'},
+    {name: 'The Muppet Christmas Carol'},
+    {name: 'The Nightmare before Christmas'},
+    {name: 'The Polar Express'},
+    {name: 'The Santa Clause'},
+    {name: 'White Christmas'}
 ]);
 
 
