@@ -86,7 +86,7 @@ gulp.task('build', ['static', 'build-html']);
 gulp.task('serve', ['default'], function () {
   browserSync({
     notify: false,
-    logPrefix: 'balloon',
+    logPrefix: 'xmas',
     server: 'dist',
     baseDir: 'dist'
   });
