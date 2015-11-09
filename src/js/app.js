@@ -42,11 +42,11 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
     };
     
     this.show_dialog = function (title, body) {
-       this.dialog = {title: title, body: body};
+        this.dialog = {title: title, body: body};
     };
     
     this.close_dialog = function () {
-       this.dialog = null; 
+        this.dialog = null;
     };
     
     document.addEventListener('keyup', function (event) {
@@ -63,7 +63,7 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
     clear_guessed_movie();
     
     this.show_help_dialog = function () {
-        var body_template = template("On the wall you\'ll find ${size} movies concealed in obscured posters. When you spot a movie you recognise enter in the box at the bottom.");
+        var body_template = template('On the wall you\'ll find ${size} movies concealed in obscured posters. When you spot a movie you recognise enter in the box at the bottom.');
         this.show_dialog('Welcome to Christmas Movies', body_template(MovieLookup));
     };
     this.show_help_dialog();
