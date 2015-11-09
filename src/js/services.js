@@ -1,6 +1,7 @@
 'use strict';
 
 var angular = require('angular');
+var levenshtein = require('fast-levenshtein');
 
 var MODULE_NAME = 'xmas.services';
 
@@ -37,7 +38,16 @@ services.factory('Normalizer', function (SYNONYMS, STOPWORDS) {
 
 services.constant('SYNONYMS', {
     '+': 'and',
-    '&': 'and'
+    '&': 'and',
+    '1': 'one',
+    '2': 'two',
+    '3': 'three',
+    '4': 'four',
+    '5': 'five',
+    '6': 'six',
+    '7': 'seven',
+    '8': 'eight',
+    '9': 'nine'
 });
 
 
@@ -52,14 +62,37 @@ services.factory('MovieLookup', function (MOVIES, Normalizer) {
 
     var service = {
         has: function (movie_name) {
-            var movie_name_normalized = Normalizer.normalize(movie_name);
-            return (movie_name_normalized in movies_by_normalized_name);
+            return retrieve_movie(movie_name) !== null;
         },
         get: function (movie_name) {
-            var movie_name_normalized = Normalizer.normalize(movie_name);
-            var movie = movies_by_normalized_name[movie_name_normalized] || null;
-            return movie;
+            return retrieve_movie(movie_name);
         }
+    };
+
+    var retrieve_movie = function (movie_name) {
+        var movie_name_normalized = Normalizer.normalize(movie_name);
+        var movie = movies_by_normalized_name[movie_name_normalized];
+
+        if (!movie) {
+            var best_match = {movie: null, levenshtein_distance: Infinity};
+            angular.forEach(movies_by_normalized_name, function (test_movie, test_normalized_name) {
+                var levenshtein_distance = levenshtein.get(
+                    test_normalized_name,
+                    movie_name_normalized
+                );
+                if (levenshtein_distance < best_match.levenshtein_distance) {
+                    best_match = {
+                        movie: test_movie,
+                        levenshtein_distance: levenshtein_distance
+                    };
+                }
+            });
+            if (best_match.levenshtein_distance < 3) {
+                movie = best_match.movie;
+            }
+        }
+
+        return movie || null;
     };
 
     Object.defineProperty(service, 'size', {

@@ -82,6 +82,11 @@ describe('Services', function () {
         it('should report the number of known movies', function () {
             expect(MovieLookup.size).toEqual(1);
         });
+
+        it('should allow for typos', function () {
+            expect(MovieLookup.has('A mvoie')).toBe(true);
+            expect(MovieLookup.has('A movi')).toBe(true);
+        });
     });
 
 });
