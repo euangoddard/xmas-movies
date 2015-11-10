@@ -13,9 +13,9 @@
 
 </head>
 <body ng-app="xmas-movies" ng-controller="AppController as app">
-  <header>
-    <h1>Christmas movie challenge</h1>
-    <aside ng-cloak>{{ app.correct_movies.length }} / {{ app.total_movies }}</aside>
+  <header class="page-header">
+    <h1 class="page-title">Christmas movie challenge</h1>
+    <aside class="score" ng-cloak>{{ app.correct_movies.length }} / {{ app.total_movies }}</aside>
   </header>
   <div class="wall">
     <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">

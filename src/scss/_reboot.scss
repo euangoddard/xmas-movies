@@ -1,3 +1,4 @@
+@import "variables";
 
 html {
   box-sizing: border-box;
@@ -22,7 +23,7 @@ html {
 }
 
 body {
-  font-family: 'Cantarell', sans-serif;
+  font-family: $font-stack-sans-serif;
   font-size: 16px;
   line-height: 1.5rem;
   color: #fff;
@@ -32,7 +33,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
-  font-family: 'Pacifico', cursive;
+  font-family: $font-stack-cursive;
   font-weight: 400;
 }
 
