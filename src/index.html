@@ -12,7 +12,7 @@
   <!-- endinject -->
 
 </head>
-<body ng-app="xmas-movies" ng-controller="AppController as app">
+<body ng-app="xmas-movies" ng-controller="AppController as app" ng-class="{'dialog-active': app.dialog}">
   <header class="page-header">
     <h1 class="page-title">Christmas movie challenge</h1>
     <aside
@@ -46,7 +46,7 @@
     <p>for best results</p>
   </div>
 
-  <aside class="dialog" ng-if="app.dialog">
+  <aside class="dialog">
     <nav class="dialog-actions">
       <button ng-click="app.close_dialog()">&times;</button>
     </nav>

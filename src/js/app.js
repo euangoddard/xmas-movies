@@ -29,16 +29,16 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
         if (MovieLookup.has(movie_name)) {
             var movie = MovieLookup.get(movie_name);
             if (ctrl.correct_movies.indexOf(movie) > -1) {
-                var body_template = template('You already found ${name}. Try another.');
+                var body_template = template('You already found "${name}". Try another.');
                 this.show_dialog('Already found', body_template(movie));
             } else {
                 SoundManager.play('hohoho');
                 ctrl.correct_movies.push(movie);
-                this.show_dialog('Correct!', template('You found ${name}!')(movie));
+                this.show_dialog('Correct!', template('You found "${name}!"')(movie));
                 clear_guessed_movie();
             }
         } else {
-            this.show_dialog('Not on the wall', template('${name} is not on the wall')({name: movie_name}));
+            this.show_dialog('Not on the wall', template('"${name}" is not on the wall')({name: movie_name}));
         }
     };
     
@@ -64,7 +64,7 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
     clear_guessed_movie();
     
     this.show_help_dialog = function () {
-        var body_template = template('On the wall you\'ll find ${size} movies concealed in obscured posters. When you spot a movie you recognise, enter its name in the box at the bottom.');
+        var body_template = template('On the wall you\'ll find ${size} Christmassy movies concealed in obscured posters. When you spot a movie you recognise, enter its name in the box at the bottom.');
         this.show_dialog('Welcome to Christmas Movies', body_template(MovieLookup));
     };
     this.show_help_dialog();
