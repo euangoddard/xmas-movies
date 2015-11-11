@@ -5,6 +5,7 @@ var template = require('lodash.template');
 
 
 var app = angular.module('xmas-movies', [
+    require('angular-animate'),
     require('./services'),
     require('./sound')
 ]);
@@ -67,5 +68,9 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
         this.show_dialog('Welcome to Christmas Movies', body_template(MovieLookup));
     };
     this.show_help_dialog();
-    
+
+    this.are_answers_shown = false;
+    this.toggle_answers_visibility = function () {
+        this.are_answers_shown = !this.are_answers_shown;
+    };
 });

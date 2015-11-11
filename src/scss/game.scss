@@ -22,7 +22,7 @@
     overflow: hidden;
   }
 
-  .wall-image {
+  %wall-child {
     position: absolute;
     display: block;
     top: 0;
@@ -35,8 +35,24 @@
       height: 100%;
     }
   }
+  .wall-image {
+    @extend %wall-child;
+  }
+
+  .answers {
+    @extend %wall-child;
+    background-color: rgba(black, 0.7);
+    opacity: 1;
+
+    transition: 0.25s linear opacity;
+    &.ng-hide {
+      opacity: 0;
+    }
+  }
 
 }
+
+
 
 .input-seemless {
   width: 100%;
