@@ -20,9 +20,9 @@ app.run(function (SoundManager) {
 });
 
 
-app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
+app.controller('AppController', function ($scope, SoundManager, MovieLookup, MOVIES) {
     var ctrl = this;
-    this.correct_movies = [];
+    this.correct_movies = MOVIES;
     this.total_movies = MovieLookup.size;
 
     this.guess = function (movie_name) {
@@ -50,8 +50,8 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
         this.dialog = null;
     };
     
-    document.addEventListener('keyup', function (event) {
-        if (event.which == 27 && !!ctrl.dialog) {
+    document.addEventListener('keyup', function () {
+        if (!!ctrl.dialog) {
             $scope.$apply(function () {
                 ctrl.close_dialog();
             });
@@ -67,9 +67,9 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup) {
         var body_template = template('On the wall you\'ll find ${size} Christmassy movies concealed in obscured posters. When you spot a movie you recognise, enter its name in the box at the bottom.');
         this.show_dialog('Welcome to Christmas Movies', body_template(MovieLookup));
     };
-    this.show_help_dialog();
+    //this.show_help_dialog();
 
-    this.are_answers_shown = false;
+    this.are_answers_shown = true;
     this.toggle_answers_visibility = function () {
         this.are_answers_shown = !this.are_answers_shown;
     };

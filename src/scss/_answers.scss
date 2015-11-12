@@ -1,0 +1,43 @@
+$answer-colour: rgba(white, 0.8);
+$answer-size: 20px;
+$answer-arrow-size: $answer-size / 2;
+
+%answer {
+    background-color: $answer-colour;
+    position: absolute;
+    padding: 0 $answer-arrow-size / 2;
+    font-size: 1rem;
+    color: black;
+    line-height: $answer-size;
+}
+
+.answer-left {
+    @extend %answer;
+    
+    &::before {
+        position: absolute;
+        width: 0; 
+	    height: 0; 
+        border-bottom: $answer-arrow-size solid transparent;
+        border-top: $answer-arrow-size solid transparent;
+        border-right: $answer-arrow-size solid $answer-colour;
+        content: '';
+        left: -1 * $answer-arrow-size;
+    }
+}
+
+.answer-right {
+    @extend %answer;
+    text-align: right;
+    
+    &::after {
+        position: absolute;
+        width: 0; 
+	    height: 0; 
+        border-bottom: $answer-arrow-size solid transparent;
+        border-top: $answer-arrow-size solid transparent;
+        border-left: $answer-arrow-size solid $answer-colour;
+        content: '';
+        right: -1 * $answer-arrow-size;
+    }
+}

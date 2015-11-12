@@ -24,7 +24,11 @@
   <div class="wall">
     <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">
     <div class="answers" ng-show="app.are_answers_shown">
-      <div ng-repeat="movie in app.correct_movies">{{ movie.name }}</div>
+      <div
+        ng-repeat="movie in app.correct_movies"
+        ng-style="{top: movie.top, left: movie.left, right: movie.right}"
+        class="answer-{{ movie.align }}"
+      >{{ movie.name }}</div>
     </div>
   </div>
   <form ng-submit="app.guess(app.movie.name)">
