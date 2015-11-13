@@ -73,14 +73,30 @@
 
 .page-title {
   text-align: center;
+  display: none;
+
+  @include large-screens {
+    display: block;
+  }
   
 }
 
 .score {
-  position: absolute;
   font-family: $font-stack-cursive;
   font-size: 2rem;
-  
-  right: 1rem;
-  top: 0;
+  display: block;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+
+  @include large-screens {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    margin: 0;
+  }
+
+  .fa-film {
+    transform: rotate(45deg);
+  }
 }

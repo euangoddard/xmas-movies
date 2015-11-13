@@ -3,7 +3,7 @@
 <head>
   <title>Christmas Movies</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Cantarell">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,10 @@
       class="score"
       ng-click="app.toggle_answers_visibility()"
       ng-cloak
-    >{{ app.correct_movies.length }} / {{ app.total_movies }}</aside>
+    >
+      {{ app.correct_movies.length }}/{{ app.total_movies }}
+      <i class="fa fa-film"></i>
+    </aside>
   </header>
   <div class="wall">
     <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">
