@@ -105,11 +105,11 @@ services.factory('MovieLookup', function (MOVIES, Normalizer) {
 
 
 services.constant('MOVIES', [
-    {name: 'A Christmas Carol', align: 'left'},
+    {name: 'A Christmas Carol', align: 'right', top: '3%', right: '81%'},
     {name: 'Arthur Christmas', align: 'right', top: '20%', right: '34%'},
     {name: 'Batman Returns', align: 'right', top: '28%', right: '83%'},
-    {name: 'Die Hard', align: 'right', top: '4%', right: '77%'},
-    {name: 'Die Harder', align: 'right', top: '54%', right: '20%'},
+    {name: 'Die Hard', align: 'right', top: '54%', right: '20%'},
+    {name: 'Die Harder', align: 'right', top: '14%', right: '75%'},
     {name: 'Elf', align: 'right', top: '46%', right: '63%'},
     {name: 'Four Christmases', align: 'right', top: '31%', right: '23%'},
     {name: 'Fred Claus', align: 'right', top: '60%', right: '75%'},
