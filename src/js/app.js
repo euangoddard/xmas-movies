@@ -19,9 +19,9 @@ app.run(function (SoundManager) {
 });
 
 
-app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup, MOVIES) {
+app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup) {
     var ctrl = this;
-    this.correct_movies = []//MOVIES;
+    this.correct_movies = [];
     this.total_movies = MovieLookup.size;
 
     this.guess = function (movie_name) {
@@ -66,9 +66,13 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
         var body_template = $interpolate('On the wall you\'ll find {{ size }} Christmassy movies concealed in obscured posters. When you spot a movie you recognise, enter its name in the box at the bottom.');
         this.show_dialog('Welcome to Christmas Movies', body_template(MovieLookup));
     };
-    //this.show_help_dialog();
+    
+    this.show_credits_dialog = function () {
+       this.show_dialog('Credits', 'Card concept and implementation by Euan Goddard. Many thanks to Greg Jackson for visual design of the poster wall.') 
+    };
+    this.show_help_dialog();
 
-    this.are_answers_shown = true;
+    this.are_answers_shown = false;
     this.toggle_answers_visibility = function () {
         this.are_answers_shown = !this.are_answers_shown;
     };
@@ -82,5 +86,24 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
             SoundManager.is_muted = true;
             this.is_muted = true;
         }
-    }
+    };
+});
+
+
+app.directive('loseFocusOn', function () {
+    var directive = {
+        link: function (scope, element, attrs) {
+            var native_element = element[0];
+            scope.$watch(attrs.loseFocusOn, function (value) {
+                if (!value || angular.equals(value, {}) || angular.equals(value, [])) {
+                    native_element.focus();
+                    native_element.select();
+                } else {
+                    native_element.blur();
+                }
+            });
+        }
+    };
+    
+    return directive;
 });

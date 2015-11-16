@@ -42,6 +42,7 @@
       placeholder="Enter a movie title"
       autocomplete="off"
       ng-model="app.movie.name"
+      lose-focus-on="app.dialog"
     >
   </form>
   
@@ -55,6 +56,11 @@
 
   <footer class="footer">
     <span class="footer-item">
+      <button type="button" ng-click="app.show_help_dialog()" class="footer-item-action">
+         Help
+      </button>
+    </span>
+    <span class="footer-item">
       <button type="button" ng-click="app.toggle_mute()" class="footer-item-action">
         <i
             class="fa"
@@ -63,7 +69,7 @@
       </button>
     </span>
     <span class="footer-item">
-      <button class="footer-item-action" type="button">
+      <button class="footer-item-action" type="button" ng-click="app.show_credits_dialog()">
         Credits
       </button>
     </span>
