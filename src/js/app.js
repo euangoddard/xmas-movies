@@ -19,9 +19,9 @@ app.run(function (SoundManager) {
 });
 
 
-app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup) {
+app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup, MOVIES) {
     var ctrl = this;
-    this.correct_movies = [];
+    this.correct_movies = MOVIES.slice(1);
     this.total_movies = MovieLookup.size;
 
     this.guess = function (movie_name) {
@@ -31,10 +31,15 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
                 var body_template = $interpolate('You already found "{{ name }}". Try another.');
                 this.show_dialog('Already found', body_template(movie));
             } else {
-                SoundManager.play('hohoho');
                 ctrl.correct_movies.push(movie);
-                this.show_dialog('Correct!', $interpolate('You found "{{ name }}!"')(movie));
                 clear_guessed_movie();
+                if (ctrl.correct_movies.length === MovieLookup.size) {
+                    ctrl.show_dialog('You win!', $interpolate('You found the last movie, "{{ name }}". Thanks for playing and have a very Merry Christmas.')(movie));
+                    ctrl.are_answers_shown = true;
+                } else {
+                    SoundManager.play('hohoho');
+                    this.show_dialog('Correct!', $interpolate('You found "{{ name }}!"')(movie));
+                }
             }
         } else {
             this.show_dialog('Not on the wall', $interpolate('"{{ name }}" is not on the wall')({name: movie_name}));

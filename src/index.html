@@ -42,6 +42,7 @@
       placeholder="Enter a movie title"
       autocomplete="off"
       ng-model="app.movie.name"
+      ng-disabled="app.correct_movies.length == app.total_movies"
       lose-focus-on="app.dialog"
     >
   </form>
