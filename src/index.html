@@ -53,6 +53,22 @@
     <p>for best results</p>
   </div>
 
+  <footer class="footer">
+    <span class="footer-item">
+      <button type="button" ng-click="app.toggle_mute()" class="footer-item-action">
+        <i
+            class="fa"
+            ng-class="{'fa-volume-up': !app.is_muted, 'fa-volume-off': app.is_muted}"
+        ></i>
+      </button>
+    </span>
+    <span class="footer-item">
+      <button class="footer-item-action" type="button">
+        Credits
+      </button>
+    </span>
+  </footer>
+
   <aside class="dialog">
     <nav class="dialog-actions">
       <button ng-click="app.close_dialog()">&times;</button>

@@ -22,7 +22,7 @@ app.run(function (SoundManager) {
 
 app.controller('AppController', function ($scope, SoundManager, MovieLookup, MOVIES) {
     var ctrl = this;
-    this.correct_movies = MOVIES;
+    this.correct_movies = []//MOVIES;
     this.total_movies = MovieLookup.size;
 
     this.guess = function (movie_name) {
@@ -50,8 +50,8 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup, MOV
         this.dialog = null;
     };
     
-    document.addEventListener('keyup', function () {
-        if (!!ctrl.dialog) {
+    document.addEventListener('keyup', function (event) {
+        if (event.which !== 13 && !!ctrl.dialog) {
             $scope.$apply(function () {
                 ctrl.close_dialog();
             });
@@ -73,4 +73,15 @@ app.controller('AppController', function ($scope, SoundManager, MovieLookup, MOV
     this.toggle_answers_visibility = function () {
         this.are_answers_shown = !this.are_answers_shown;
     };
+
+    this.is_muted = SoundManager.is_muted;
+    this.toggle_mute = function () {
+        if (this.is_muted) {
+            SoundManager.is_muted = false;
+            this.is_muted = false;
+        } else {
+            SoundManager.is_muted = true;
+            this.is_muted = true;
+        }
+    }
 });

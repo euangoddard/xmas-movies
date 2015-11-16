@@ -3,3 +3,13 @@
     @content;
   }
 }
+
+@mixin reset-button {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+}

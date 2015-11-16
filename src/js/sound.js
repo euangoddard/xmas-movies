@@ -28,6 +28,10 @@ sound.provider('SoundManager', function () {
     };
 
     this.$get = function ($q) {
+        var is_muted = false;
+        var gain_node = context.createGain();
+        gain_node.gain.value = 1;
+        gain_node.connect(context.destination);
 
         var load_sound = function (sound) {
             var url = get_sound_file_name(sound);
@@ -49,13 +53,13 @@ sound.provider('SoundManager', function () {
             return sound_load_promise;
         };
 
-        return {
+        var service = {
             play: function (sound) {
                 var sound_promise = $q(function (resolve) {
                     var buffer = sounds[sound];
                     var source = context.createBufferSource();
                     source.buffer = buffer;
-                    source.connect(context.destination);
+                    source.connect(gain_node);
                     source.onended = resolve;
                     source.start(0);
                 });
@@ -70,6 +74,22 @@ sound.provider('SoundManager', function () {
                 return $q.all(sound_load_promises);
             }
         };
+        Object.defineProperty(service, 'is_muted', {
+            enumerable: true,
+            get: function () {
+                return is_muted;
+            },
+            set: function (value) {
+                is_muted = !!value;
+                if (is_muted) {
+                    gain_node.gain.value = 0;
+                } else {
+                    gain_node.gain.value = 1;
+                }
+            }
+        });
+
+        return service;
     };
 
 });
