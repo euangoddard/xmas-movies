@@ -4,9 +4,12 @@
 @import "mixins";
 @import "answers";
 @import "dialog";
-@import "portrait-warning";
 @import "footer";
 @import "variables";
+
+body {
+  padding-bottom: 5.75rem;
+}
 
 .wall {
   $wall-width: 1600px;
@@ -14,14 +17,15 @@
 
   position: relative;
   width: auto;
-  max-width: 1600px;
-  height: 0;
-  padding-bottom: 100% * ($wall-height / $wall-width);
   overflow: auto;
   margin: 0 auto;
+  height: 100vh;
 
   @include large-screens {
     overflow: hidden;
+    max-width: 1600px;
+    padding-bottom: 100% * ($wall-height / $wall-width);
+    height: 0;
   }
 
   %wall-child {
@@ -54,50 +58,4 @@
     }
   }
 
-}
-
-.input-seemless {
-  width: 100%;
-  border: 0px;
-  font-weight: 300;
-  font-size: 2rem;
-  line-height: 3rem;
-  text-align: center;
-  outline: 0;
-  background-color: transparent;
-  color: #fff;
-}
-
-.page-header {
-  line-height: 3rem;
-}
-
-.page-title {
-  text-align: center;
-  display: none;
-
-  @include large-screens {
-    display: block;
-  }
-  
-}
-
-.score {
-  font-family: $font-stack-cursive;
-  font-size: 2rem;
-  display: block;
-  text-align: center;
-  user-select: none;
-  cursor: pointer;
-
-  @include large-screens {
-    position: absolute;
-    right: 1rem;
-    top: 0;
-    margin: 0;
-  }
-
-  .fa-film {
-    transform: rotate(45deg);
-  }
 }

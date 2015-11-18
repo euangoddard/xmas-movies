@@ -13,20 +13,9 @@
 
 </head>
 <body ng-app="xmas-movies" ng-controller="AppController as app" ng-class="{'dialog-active': app.dialog}">
-  <header class="page-header">
-    <h1 class="page-title">Christmas movie challenge</h1>
-    <aside
-      class="score"
-      ng-click="app.toggle_answers_visibility()"
-      ng-cloak
-    >
-      {{ app.correct_movies.length }}/{{ app.total_movies }}
-      <i class="fa fa-film"></i>
-    </aside>
-  </header>
   <div class="wall">
     <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">
-    <div class="answers" ng-show="app.are_answers_shown">
+    <div class="answers" ng-show="app.are_answers_shown" ng-cloak>
       <div
         ng-repeat="movie in app.correct_movies"
         ng-style="{top: movie.top, left: movie.left, right: movie.right}"
@@ -34,47 +23,52 @@
       >{{ movie.name }}</div>
     </div>
   </div>
-  <form ng-submit="app.guess(app.movie.name)">
-    <input
-      type="text"
-      required
-      class="input-seemless"
-      placeholder="Enter a movie title"
-      autocomplete="off"
-      ng-model="app.movie.name"
-      ng-disabled="app.correct_movies.length == app.total_movies"
-      lose-focus-on="app.dialog"
-    >
-  </form>
   
-  <div class="portrait-warning">
-    <p>Rotate your device</p>
-    <p>
-      <i class="fa fa-mobile"></i>
-    </p>
-    <p>for best results</p>
+  <div class="footer">
+    <div class="controls">
+      <form ng-submit="app.guess(app.movie.name)" ng-cloak class="form-guess">
+        <input
+          type="text"
+          required
+          class="input-seemless"
+          placeholder="Enter a movie title"
+          autocomplete="off"
+          ng-model="app.movie.name"
+          ng-disabled="app.correct_movies.length == app.total_movies"
+          lose-focus-on="app.dialog"
+        >
+      </form>
+      <aside
+        class="score"
+        ng-click="app.toggle_answers_visibility()"
+        ng-cloak
+      >
+        {{ app.correct_movies.length }}/{{ app.total_movies }}
+        <i class="fa" ng-class="{'fa-eye': !app.are_answers_shown, 'fa-eye-slash': app.are_answers_shown}"></i>
+      </aside>
+    </div>
+    
+    <footer class="sub-footer">
+      <span class="footer-item">
+        <button type="button" ng-click="app.show_help_dialog()" class="footer-item-action">
+          Help
+        </button>
+      </span>
+      <span class="footer-item">
+        <button type="button" ng-click="app.toggle_mute()" class="footer-item-action">
+          <i
+              class="fa"
+              ng-class="{'fa-volume-up': !app.is_muted, 'fa-volume-off': app.is_muted}"
+          ></i>
+        </button>
+      </span>
+      <span class="footer-item">
+        <button class="footer-item-action" type="button" ng-click="app.show_credits_dialog()">
+          Credits
+        </button>
+      </span>
+    </footer>
   </div>
-
-  <footer class="footer">
-    <span class="footer-item">
-      <button type="button" ng-click="app.show_help_dialog()" class="footer-item-action">
-         Help
-      </button>
-    </span>
-    <span class="footer-item">
-      <button type="button" ng-click="app.toggle_mute()" class="footer-item-action">
-        <i
-            class="fa"
-            ng-class="{'fa-volume-up': !app.is_muted, 'fa-volume-off': app.is_muted}"
-        ></i>
-      </button>
-    </span>
-    <span class="footer-item">
-      <button class="footer-item-action" type="button" ng-click="app.show_credits_dialog()">
-        Credits
-      </button>
-    </span>
-  </footer>
 
   <aside class="dialog">
     <nav class="dialog-actions">

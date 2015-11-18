@@ -105,7 +105,7 @@ services.factory('MovieLookup', function (MOVIES, Normalizer) {
 
 
 services.constant('MOVIES', [
-    {name: 'A Christmas Carol', align: 'right', top: '3%', right: '81%'},
+    {name: 'A Christmas Carol', align: 'right', top: '1%', right: '81%'},
     {name: 'Arthur Christmas', align: 'right', top: '20%', right: '34%'},
     {name: 'Batman Returns', align: 'right', top: '28%', right: '83%'},
     {name: 'Die Hard', align: 'right', top: '54%', right: '20%'},
@@ -115,19 +115,19 @@ services.constant('MOVIES', [
     {name: 'Fred Claus', align: 'right', top: '60%', right: '75%'},
     {name: 'Gremlins', align: 'right', top: '80%', right: '25%'},
     {name: 'Hogfather', align: 'left', top: '68%', left: '12%'},
-    {name: 'Home Alone 2', align: 'right', top: '10%', right: '27%'},
+    {name: 'Home Alone 2', align: 'right', top: '11%', right: '27%'},
     {name: 'Home Alone', align: 'right', top: '90%', right: '80%'},
-    {name: 'It\'s a Wonderful Life', top: '9%', left: '10%', align: 'left'},
+    {name: 'It\'s a Wonderful Life', top: '6%', left: '10%', align: 'left'},
     {name: 'Jingle all the way', align: 'right', top: '42%', right: '12%'},
-    {name: 'Lethal Weapon', align: 'right', top: '95%', right: '65%'},
-    {name: 'Love Actually', align: 'right', top: '59%', right: '50%'},
+    {name: 'Lethal Weapon', align: 'right', top: '93%', right: '65%'},
+    {name: 'Love Actually', align: 'right', top: '57%', right: '50%'},
     {name: 'Miracle on 34th Street', align: 'right', top: '85%', right: '5%'},
     {name: 'Scrooged', align: 'right', top: '14%', right: '10%'},
     {name: 'The Grinch', align: 'left', top: '15%', left: '41%'},
-    {name: 'The Long Kiss Goodnight', align: 'right', top: '32%', right: '60%'},
+    {name: 'The Long Kiss Goodnight', align: 'right', top: '32%', right: '59%'},
     {name: 'The Muppet Christmas Carol', align: 'left', top: '39%', left: '15%'},
     {name: 'The Nightmare before Christmas', align: 'right', top: '65%', right: '34%'},
-    {name: 'The Polar Express', align: 'left', left: '56%', top: '5%'},
+    {name: 'The Polar Express', align: 'left', left: '56%', top: '4%'},
     {name: 'The Santa Clause', align: 'right', top: '53%', right: '80%'},
     {name: 'White Christmas', align: 'right', top: '91%', right: '40%'}
 ]);

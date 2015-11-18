@@ -1,14 +1,22 @@
-$answer-colour: rgba(white, 0.8);
-$answer-size: 24px;
+@import "variables";
+@import "mixins";
+
+$answer-colour: rgba(#222, 0.7);
+$answer-size: 32px;
 $answer-arrow-size: $answer-size / 2;
 
 %answer {
     background-color: $answer-colour;
     position: absolute;
     padding: 0 $answer-arrow-size / 2;
-    font-size: 1rem;
-    color: black;
+    font-size: 1.5rem;
+    color: #fff;
     line-height: $answer-size;
+    font-family: $font-stack-cursive;
+    
+    @include large-screens {
+        font-size: 1rem;
+    }
 }
 
 .answer-left {

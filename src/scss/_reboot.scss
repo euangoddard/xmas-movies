@@ -32,7 +32,7 @@ body {
   font-size: $font-size-base-small-devices;
   line-height: 1.5rem;
   color: #fff;
-  background-color: #222;
+  background-color: #333;
   
   @include large-screens {
     font-size: $font-size-base-large-devices;

@@ -9,8 +9,9 @@ var app = angular.module('xmas-movies', [
     require('./sound')
 ]);
 
-app.config(function (SoundManagerProvider) {
+app.config(function (SoundManagerProvider, $compileProvider) {
     SoundManagerProvider.set_sounds_root('/sounds/');
+   $compileProvider.debugInfoEnabled(false);
 });
 
 
