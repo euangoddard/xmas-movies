@@ -9,14 +9,15 @@
 }
 
 .controls {
-  position: relative;
   background-color: #222;
   padding-top: 0.5rem;
+  display: flex;
 }
 
 .form-guess {
   padding-left: 1rem;
-  width: 100%;
+  padding-right: 1rem;
+  flex: 1;
 }
 
 %control-item {
@@ -42,9 +43,7 @@
   text-align: center;
   user-select: none;
   cursor: pointer;
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
+  padding-right: 1rem;
 }
 
 .sub-footer {
