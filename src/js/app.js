@@ -11,7 +11,7 @@ var app = angular.module('xmas-movies', [
 
 app.config(function (SoundManagerProvider, $compileProvider) {
     SoundManagerProvider.set_sounds_root('/sounds/');
-   $compileProvider.debugInfoEnabled(false);
+    $compileProvider.debugInfoEnabled(false);
 });
 
 
@@ -74,7 +74,7 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
     };
     
     this.show_credits_dialog = function () {
-       this.show_dialog('Credits', 'Card concept and implementation by Euan Goddard. Many thanks to Greg Jackson for visual design of the poster wall.') 
+        this.show_dialog('Credits', 'Card concept and implementation by Euan Goddard. Many thanks to Greg Jackson for visual design of the poster wall.'); 
     };
     this.show_help_dialog();
 
