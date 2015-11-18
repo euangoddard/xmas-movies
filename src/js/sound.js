@@ -3,7 +3,7 @@
 var MODULE_NAME = 'xmas.sound';
 
 var angular = require('angular');
-var Modernizr = require('./modernizr-audio');
+var can_play_ogg = require('./can-play-ogg');
 
 var sound = angular.module(MODULE_NAME, []);
 
@@ -13,7 +13,7 @@ sound.provider('SoundManager', function () {
 
     var sounds_root = '/';
 
-    var extension = Modernizr.audio.ogg ? 'ogg' : 'm4a';
+    var extension = can_play_ogg() ? 'ogg' : 'm4a';
 
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     var context = new AudioContext();
