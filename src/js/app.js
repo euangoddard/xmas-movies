@@ -16,13 +16,13 @@ app.config(function (SoundManagerProvider, $compileProvider) {
 
 
 app.run(function (SoundManager) {
-    SoundManager.add_sounds(['hohoho']);
+    SoundManager.add_sounds(['hohoho', 'hallelujah']);
 });
 
 
-app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup, MOVIES) {
+app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup) {
     var ctrl = this;
-    this.correct_movies = MOVIES.slice(1);
+    this.correct_movies = [];
     this.total_movies = MovieLookup.size;
 
     this.guess = function (movie_name) {
@@ -35,6 +35,7 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
                 ctrl.correct_movies.push(movie);
                 clear_guessed_movie();
                 if (ctrl.correct_movies.length === MovieLookup.size) {
+                    SoundManager.play('hallelujah');
                     ctrl.show_dialog('You win!', $interpolate('You found the last movie, "{{ name }}". Thanks for playing and have a very Merry Christmas.')(movie));
                     ctrl.are_answers_shown = true;
                 } else {
