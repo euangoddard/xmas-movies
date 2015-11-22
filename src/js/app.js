@@ -16,7 +16,7 @@ app.config(function (SoundManagerProvider, $compileProvider) {
 
 
 app.run(function (SoundManager) {
-    SoundManager.add_sounds(['hohoho', 'hallelujah']);
+    SoundManager.add_sounds(['hohoho', 'wrong', 'hallelujah']);
 });
 
 
@@ -29,6 +29,7 @@ app.controller('AppController', function ($scope, $interpolate, $timeout, SoundM
         if (MovieLookup.has(movie_name)) {
             var movie = MovieLookup.get(movie_name);
             if (ctrl.correct_movies.indexOf(movie) > -1) {
+                SoundManager.play('wrong');
                 var body_template = $interpolate('You already found "{{ name }}". Try another.');
                 this.show_toast(body_template(movie));
             } else {
@@ -44,6 +45,7 @@ app.controller('AppController', function ($scope, $interpolate, $timeout, SoundM
                 }
             }
         } else {
+            SoundManager.play('wrong');
             this.show_toast($interpolate('"{{ name }}" is not on the wall')({name: movie_name}));
         }
     };
