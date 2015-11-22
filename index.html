@@ -1,1 +1,91 @@
-<!doctype html><html lang=en><head><title>Christmas Movies</title><link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Pacifico|Roboto"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name=viewport><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><link rel=stylesheet href=/css/game.css></head><body ng-app=xmas-movies ng-controller="AppController as app" ng-class="{'dialog-active': app.dialog, 'toast-active': app.toast.message}"><div class=wall><img class=wall-image src=/images/background.jpg ng-dblclick=app.toggle_fullscreen_image($event)><div class=answers ng-show=app.are_answers_shown ng-cloak><div ng-repeat="movie in app.correct_movies" ng-style="{top: movie.top, left: movie.left, right: movie.right}" class="answer-{{ movie.align }}">{{ movie.name }}</div></div></div><div class=footer><div class=controls><form ng-submit=app.guess(app.movie.name) ng-cloak class=form-guess><input type=text required class=input-seemless placeholder="Enter a movie title" autocomplete=off ng-model=app.movie.name ng-disabled="app.correct_movies.length == app.total_movies" lose-focus-on=app.dialog></form><aside class=score ng-click=app.toggle_answers_visibility() ng-cloak>{{ app.correct_movies.length }}/{{ app.total_movies }} <i class=fa ng-class="{'fa-eye': !app.are_answers_shown, 'fa-eye-slash': app.are_answers_shown}"></i></aside></div><footer class=sub-footer><span class=footer-item><button type=button ng-click=app.show_help_dialog() class=footer-item-action>Help</button></span> <span class=footer-item><button type=button ng-click=app.toggle_mute() class=footer-item-action><i class=fa ng-class="{'fa-volume-up': !app.is_muted, 'fa-volume-off': app.is_muted}"></i></button></span> <span class=footer-item><button class=footer-item-action type=button ng-click=app.show_credits_dialog()>Credits</button></span></footer></div><aside class=dialog ng-click=app.close_dialog()><nav class=dialog-actions><button ng-click=app.close_dialog()>&times;</button></nav><article class=dialog-content><h2>{{ app.dialog.title }}</h2><p>{{ app.dialog.body }}</p></article></aside><aside class=toast ng-cloak>{{ app.toast.message }}</aside><script src=/js/app.js></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Christmas Movies</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/game.css">
+  <!-- endinject -->
+
+</head>
+<body ng-app="xmas-movies" ng-controller="AppController as app" ng-class="{'dialog-active': app.dialog, 'toast-active': app.toast.message}">
+  <div class="wall">
+    <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">
+    <div class="answers" ng-show="app.are_answers_shown" ng-cloak>
+      <div
+        ng-repeat="movie in app.correct_movies"
+        ng-style="{top: movie.top, left: movie.left, right: movie.right}"
+        class="answer-{{ movie.align }}"
+      >{{ movie.name }}</div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="controls">
+      <form ng-submit="app.guess(app.movie.name)" ng-cloak class="form-guess">
+        <input
+          type="text"
+          required
+          class="input-seemless"
+          placeholder="Enter a movie title"
+          autocomplete="off"
+          ng-model="app.movie.name"
+          ng-disabled="app.correct_movies.length == app.total_movies"
+          lose-focus-on="app.dialog"
+        >
+      </form>
+      <aside
+        class="score"
+        ng-click="app.toggle_answers_visibility()"
+        ng-cloak
+      >
+        {{ app.correct_movies.length }}/{{ app.total_movies }}
+        <i class="fa" ng-class="{'fa-eye': !app.are_answers_shown, 'fa-eye-slash': app.are_answers_shown}"></i>
+      </aside>
+    </div>
+    
+    <footer class="sub-footer">
+      <span class="footer-item">
+        <button type="button" ng-click="app.show_help_dialog()" class="footer-item-action">
+          Help
+        </button>
+      </span>
+      <span class="footer-item">
+        <button type="button" ng-click="app.toggle_mute()" class="footer-item-action">
+          <i
+              class="fa"
+              ng-class="{'fa-volume-up': !app.is_muted, 'fa-volume-off': app.is_muted}"
+          ></i>
+        </button>
+      </span>
+      <span class="footer-item">
+        <button class="footer-item-action" type="button" ng-click="app.show_credits_dialog()">
+          Credits
+        </button>
+      </span>
+    </footer>
+  </div>
+
+  <aside class="dialog" ng-click="app.close_dialog()">
+    <nav class="dialog-actions">
+      <button ng-click="app.close_dialog()">&times;</button>
+    </nav>
+    <article class="dialog-content">
+      <h2>{{ app.dialog.title }}</h2>
+      <p>{{ app.dialog.body }}</p>
+    </article>
+  </aside>
+  
+  <aside class="toast" ng-cloak>
+    {{ app.toast.message }}
+  </aside>
+  <!-- inject:js -->
+  <script src="/js/app.js"></script>
+  <!-- endinject -->
+</body>
+</html>
