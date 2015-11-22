@@ -20,7 +20,7 @@ app.run(function (SoundManager) {
 });
 
 
-app.controller('AppController', function ($scope, $interpolate, SoundManager, MovieLookup) {
+app.controller('AppController', function ($scope, $interpolate, $timeout, SoundManager, MovieLookup) {
     var ctrl = this;
     this.correct_movies = [];
     this.total_movies = MovieLookup.size;
@@ -30,7 +30,7 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
             var movie = MovieLookup.get(movie_name);
             if (ctrl.correct_movies.indexOf(movie) > -1) {
                 var body_template = $interpolate('You already found "{{ name }}". Try another.');
-                this.show_dialog('Already found', body_template(movie));
+                this.show_toast(body_template(movie));
             } else {
                 ctrl.correct_movies.push(movie);
                 clear_guessed_movie();
@@ -40,11 +40,11 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
                     ctrl.are_answers_shown = true;
                 } else {
                     SoundManager.play('hohoho');
-                    this.show_dialog('Correct!', $interpolate('You found "{{ name }}!"')(movie));
+                    this.show_toast($interpolate('You found "{{ name }}!"')(movie));
                 }
             }
         } else {
-            this.show_dialog('Not on the wall', $interpolate('"{{ name }}" is not on the wall')({name: movie_name}));
+            this.show_toast($interpolate('"{{ name }}" is not on the wall')({name: movie_name}));
         }
     };
     
@@ -55,6 +55,16 @@ app.controller('AppController', function ($scope, $interpolate, SoundManager, Mo
     this.close_dialog = function () {
         this.dialog = null;
     };
+    
+    var toast_timeout = null;
+    this.show_toast = function (message) {
+        $timeout.cancel(toast_timeout);
+        this.toast.message = message;
+        toast_timeout = $timeout(function () {
+            ctrl.toast = {};
+        }, 7000);
+    };
+    this.toast = {};
     
     document.addEventListener('keyup', function (event) {
         if (event.which !== 13 && !!ctrl.dialog) {

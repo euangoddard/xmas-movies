@@ -12,7 +12,7 @@
   <!-- endinject -->
 
 </head>
-<body ng-app="xmas-movies" ng-controller="AppController as app" ng-class="{'dialog-active': app.dialog}">
+<body ng-app="xmas-movies" ng-controller="AppController as app" ng-class="{'dialog-active': app.dialog, 'toast-active': app.toast.message}">
   <div class="wall">
     <img class="wall-image" src="/images/background.jpg" ng-dblclick="app.toggle_fullscreen_image($event)">
     <div class="answers" ng-show="app.are_answers_shown" ng-cloak>
@@ -70,7 +70,7 @@
     </footer>
   </div>
 
-  <aside class="dialog">
+  <aside class="dialog" ng-click="app.close_dialog()">
     <nav class="dialog-actions">
       <button ng-click="app.close_dialog()">&times;</button>
     </nav>
@@ -78,6 +78,10 @@
       <h2>{{ app.dialog.title }}</h2>
       <p>{{ app.dialog.body }}</p>
     </article>
+  </aside>
+  
+  <aside class="toast" ng-cloak>
+    {{ app.toast.message }}
   </aside>
   <!-- inject:js -->
   <!-- endinject -->
