@@ -2,6 +2,14 @@
 
 var angular = require('angular');
 
+var KEY_CODES_TO_IGNORE = [
+    13, // return
+    16, // shift alone
+    17, // ctrl alone
+    18, // alt alone
+    91, // left cmd
+    93 // right cmd
+];
 
 var app = angular.module('xmas-movies', [
     require('angular-animate'),
@@ -69,7 +77,7 @@ app.controller('AppController', function ($scope, $interpolate, $timeout, SoundM
     this.toast = {};
     
     document.addEventListener('keyup', function (event) {
-        if (event.which !== 13 && !!ctrl.dialog) {
+        if (KEY_CODES_TO_IGNORE.indexOf(event.which) === -1 && !!ctrl.dialog) {
             $scope.$apply(function () {
                 ctrl.close_dialog();
             });
