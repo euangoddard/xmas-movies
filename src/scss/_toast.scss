@@ -6,7 +6,7 @@
     z-index: 8;
     position: fixed;
     bottom: 8rem;
-    right: 0;
+    left: 0;
     color: #fff;
     background-color: $colour-black-translucent;
     padding: 1rem;
@@ -14,7 +14,7 @@
     font-size: 1.5rem;
     
     transition: 0.5s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translateX(100%);
+    transform: translateX(-100%);
     
     .toast-active & {
         transform: translateX(0);

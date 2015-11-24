@@ -49,7 +49,7 @@ app.controller('AppController', function ($scope, $interpolate, $timeout, SoundM
                     ctrl.are_answers_shown = true;
                 } else {
                     SoundManager.play('hohoho');
-                    this.show_toast($interpolate('You found "{{ name }}!"')(movie));
+                    this.show_dialog('Correct!', $interpolate('You found "{{ name }}!"')(movie));
                 }
             }
         } else {
