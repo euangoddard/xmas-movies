@@ -46,6 +46,8 @@
   "dependencies": {
     "angular": "^1.5.0-beta.2",
     "angular-animate": "^1.5.0-beta.2",
+    "angulartics": "^0.20.2",
+    "angulartics-google-analytics": "^0.1.2",
     "fast-levenshtein": "~1.0.7"
   }
 }
