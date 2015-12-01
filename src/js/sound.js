@@ -16,7 +16,13 @@ sound.provider('SoundManager', function () {
     var extension = can_play_ogg() ? 'ogg' : 'm4a';
 
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    var context = new AudioContext();
+
+    var context;
+    try {
+        context = new AudioContext();
+    } catch (e) {
+        context = null;
+    }
 
     this.set_sounds_root = function (root) {
         sounds_root = root;
@@ -91,6 +97,16 @@ sound.provider('SoundManager', function () {
 
         return service;
     };
+
+    if (!context) {
+        this.$get = function () {
+            return {
+                play: angular.noop,
+                add_sounds: angular.noop,
+                is_muted: true
+            };
+        };
+    }
 
 });
 
